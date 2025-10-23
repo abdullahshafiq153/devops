@@ -34,6 +34,10 @@ All the code for the tasks has been pushed to the private GitHub repository `Dev
 
 3.  **Running and Verifying the Container:** My initial attempt to run the container in the background with `-d` flag resulted in a container that exited immediately because it had no long-running process. After removing that container, I ran a new one in interactive mode (`-it`) to get a shell. Once inside, I ran `git --version`, which confirmed that Git was correctly installed.
 
+<img src="/assignment2/task1/Terminal Screenshot.png"
+     alt=""
+     style="float: left; margin-right: 10px;" />
+
 **Outcome:** I successfully created a minimal, functional Docker image with Git installed. This task helped me understand image layering, Docker's tagging convention, and the difference between running a container in detached versus interactive mode.
 
 **Screenshots:**
@@ -41,9 +45,6 @@ All the code for the tasks has been pushed to the private GitHub repository `Dev
      alt=""
      style="float: left; margin-right: 10px;" />
 
-<img src="/assignment2/task1/Terminal Screenshot.png"
-     alt=""
-     style="float: left; margin-right: 10px;" />
 ---
 
 ### **Task 2: Multi-Container Application with Flask and Redis**
@@ -80,7 +81,7 @@ All the code for the tasks has been pushed to the private GitHub repository `Dev
      alt=""
      style="float: left; margin-right: 10px;" />
 
-    To verify, I opened my web browser and went to `http://localhost:8000`. The page displayed "Hello World! I have been seen 1 times." Each time I refreshed the page, the number increased, proving that the Flask app was successfully communicating with the Redis database to store and retrieve the hit count.
+    `To verify, I opened my web browser and went to `http://localhost:8000`. The page displayed "Hello World! I have been seen 1 times." Each time I refreshed the page, the number increased, proving that the Flask app was successfully communicating with the Redis database to store and retrieve the hit count.`
 
 <img src="/assignment2/task2/Image Evidence/Browser.png"
      alt=""
