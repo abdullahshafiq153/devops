@@ -1,0 +1,7 @@
+# Using the 'alpine:latest' image as the base.
+FROM alpine:latest
+
+# Installing the 'git' package using Alpine's package manager 'apk'.
+RUN apk update && \
+    apk add git && \
+    rm -rf /var/cache/apk/*
