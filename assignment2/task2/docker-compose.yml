@@ -1,0 +1,34 @@
+version: '3.8' # Use a modern version syntax
+
+services:
+  web:
+    build: .
+  
+    volumes:
+      - .:/code
+   
+    command: flask run --host=0.0.0.0 --port=5000
+    ports:
+      - "8000:5000"
+    depends_on:
+      - redis
+    
+    networks:
+      - backend
+
+    environment:
+      - FLASK_APP=app.py
+
+  redis:
+    
+    image: "redis:alpine"
+   
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  web-data: 
