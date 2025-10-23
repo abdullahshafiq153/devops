@@ -81,7 +81,7 @@ All the code for the tasks has been pushed to the private GitHub repository `Dev
      alt=""
      style="float: left; margin-right: 10px;" />
 
-    `To verify, I opened my web browser and went to `http://localhost:8000`. The page displayed "Hello World! I have been seen 1 times." Each time I refreshed the page, the number increased, proving that the Flask app was successfully communicating with the Redis database to store and retrieve the hit count.`
+To verify, I opened my web browser and went to `http://localhost:8000`. The page displayed "Hello World! I have been seen 1 times." Each time I refreshed the page, the number increased, proving that the Flask app was successfully communicating with the Redis database to store and retrieve the hit count.**
 
 <img src="/assignment2/task2/Image Evidence/Browser.png"
      alt=""
