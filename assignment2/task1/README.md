@@ -1,4 +1,4 @@
-# 🐳 Task 1 - Dockerfile with Git
+# Task 1 - Dockerfile with Git
 
 ## Objective
 The goal of this task was to create a lightweight Docker image with **Git** installed, using **Alpine Linux** as the base image.  
