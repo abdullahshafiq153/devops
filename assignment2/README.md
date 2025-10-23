@@ -152,8 +152,8 @@ To verify, I opened my web browser and went to `http://localhost:8000`. The page
      alt=""
      style="float: left; margin-right: 10px;" />
 
-    Once all services were running, I proceeded to test them:
-    - I navigated to **`http://localhost:8000`**. The page loaded and displayed a message confirming a successful connection to the MySQL database, which meant the PHP application was correctly talking to the `db` service.
+Once all services were running, I proceeded to test them:
+- I navigated to **`http://localhost:8000`**. The page loaded and displayed a message confirming a successful connection to the MySQL database, which meant the PHP application was correctly talking to the `db` service.
 
 <img src="/assignment2/task3/Image Evidence/Browser 1.png"
      alt=""
@@ -163,7 +163,7 @@ To verify, I opened my web browser and went to `http://localhost:8000`. The page
      alt=""
      style="float: left; margin-right: 10px;" />
 
-    - I then navigated to **`http://localhost:8080`**. This brought up the phpMyAdmin login screen. I logged in using the username `root` and the password `MYSQL_ROOT_PASSWORD` (as defined in the environment variables), which granted me full access to manage the MySQL database.
+- I then navigated to **`http://localhost:8080`**. This brought up the phpMyAdmin login screen. I logged in using the username `root` and the password `MYSQL_ROOT_PASSWORD` (as defined in the environment variables), which granted me full access to manage the MySQL database.
 
 <img src="/assignment2/task3/Image Evidence/Php My Admin.png"
      alt=""
