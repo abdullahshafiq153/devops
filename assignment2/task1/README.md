@@ -40,14 +40,29 @@ Created a detached container:
 ```bash
 docker run -d --name task1_container qu1:v1.0
 ```
+
+### 4-Checking Container Status
+```bash
+docker ps -a
+```
 The container stopped immediately because there was no foreground process running.
 
-### 4-Attaching and Verifying Git
-To interact with the container, ran it in interactive mode:
+### 5-Removing the stopped container
 ```bash
-docker run -it --name task1_container qu1:v1.0 /bin/sh
+docker rm task1_container
 ```
 
+### 6-Verifying no containers exist
+```bash
+docker ps -a
+```
+
+### 7-Running container in interactive mode
+```bash
+docker run -it --name task1_container qu1:v1.0
+```
+
+### 8-Attaching and Verifying Git
 Verified Git installation:
 ```bash
 git --version
