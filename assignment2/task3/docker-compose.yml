@@ -1,18 +1,66 @@
 version: '3.9'
+
 services:
+   
+    # PHP/Apache Web Server
     php-apache-environment:
         container_name: php-apache
         build:
             context: .
             dockerfile: Dockerfile
+        
         depends_on:
             - db
+        
         volumes:
             - ./php/src:/var/www/html/
+        
         ports:
             - 8000:80
+
+    
+    # MySQL Database Server (Task 3a)
+    
     db:
         container_name: db
-        TO BE COMPLETED
+        # (i) Derived from image mysql
+        image: mysql:8.0
+        # (ii) Define restart policy as always
+        restart: always
+        # (iii) Define port "9906:3306"
+        ports:
+            - "9906:3306"
+        # (iv) Define environment variables used by the PHP app
+        environment:
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: MYSQL_DATABASE
+            MYSQL_USER: MYSQL_USER
+            MYSQL_PASSWORD: MYSQL_PASSWORD
+        # Best practice: Add a volume for persistent database storage
+        volumes:
+            - db-data:/var/lib/mysql
+
+    
+    # phpMyAdmin (Task 3b)
+    
     phpmyadmin:
-      TO BE COMPLETED
+        # (i) Derived from image phpmyadmin
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: phpmyadmin
+        # (ii) Define restart policy as always
+        restart: always
+        # (iii) Define export port (8080), different from the php server (8000)
+        ports:
+            - 8080:80
+        # (iv) Define the dependency on the database image
+        depends_on:
+            - db
+        # (v) Define environment variables: PMA_HOST must match the database service name
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+
+# Define the volume for persistent database storage
+volumes:
+    db-data:
+        driver: local
