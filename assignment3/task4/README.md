@@ -78,13 +78,6 @@ kubectl apply -f phpmyadmin-deployment.yaml
 
 I verified that the storage, deployments, and services were created successfully.
 
-**Cleaning up previous tasks:**
-I removed the `hello` deployment from Task 3 to free up resources.
-
-```bash
-kubectl delete deployment hello
-```
-
 **Checking Pod Status:**
 I monitored the pods until both `mysql` and `phpmyadmin` reached the `Running` state.
 
