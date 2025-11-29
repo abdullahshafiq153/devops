@@ -141,12 +141,12 @@ spec:
             privileged: false
 ```
 
-<img src="images/YAML preview.png>
+<img src="images/YAML preview.png">
 
 **Screenshot - Final Dashboard State:**
 The image below shows both deployments (`my-web-app` and `dashboard-demo`) running successfully.
 
-<img src="images/kubernetes dashboard with 2 deployment.png>
+<img src="images/kubernetes dashboard with 2 deployment.png">
 ```
 ```
 
