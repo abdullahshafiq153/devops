@@ -6,7 +6,7 @@ The goal of this task was to migrate a multi-container application (Python Web A
 
 ## 2\. Application Setup & Image Registry
 
-First, I prepared the application source code (`app.py`, `requirements.txt`, `Dockerfile`) by following the Docker "Getting Started" tutorial.
+First, I prepared the application source code (`app.py`, `requirements.txt`, `Dockerfile`,`compose.yaml`) by following the Docker "Getting Started" tutorial (docs.docker.com/compose/gettingstarted).
 
 Since Kubernetes cannot build images from a local Dockerfile during deployment, I built the image locally and pushed it to my public Docker Hub repository.
 
