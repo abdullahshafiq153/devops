@@ -26,7 +26,7 @@ docker push abdullah153/python-redis-app:latest
 
 ## 3\. Modifying Docker Compose
 
-I modified the `docker-compose.yaml` file to meet the assignment requirements.
+I modified the `compose.yaml` file to meet the assignment requirements.
 
 **Changes Made:**
 
@@ -34,7 +34,7 @@ I modified the `docker-compose.yaml` file to meet the assignment requirements.
 2.  **Restart Policy:** Added `restart: always` to the web service.
 3.  **Redis Ports:** Explicitly defined port `6379` for the Redis service to ensure the service is discoverable in Kubernetes.
 
-**Final `docker-compose.yaml`:**
+**Final `compose.yaml`:**
 
 ```yaml
 version: "3"
