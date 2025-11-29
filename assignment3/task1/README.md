@@ -147,8 +147,7 @@ spec:
 The image below shows both deployments (`my-web-app` and `dashboard-demo`) running successfully.
 
 <img src="images/kubernetes dashboard with 2 deployment.png">
-```
-```
+
 
 
 

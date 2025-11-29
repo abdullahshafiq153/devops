@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    # 1. CHANGED: Replaced 'build: .' with an image name [cite: 255]
+    image: abdullah153/python-redis-app:latest
+    # 2. ADDED: Restart policy [cite: 256]
+    restart: always
+    ports:
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
+    # 3. ADDED: Ports for redis [cite: 257]
+    ports:
+      - "6379:6379"
