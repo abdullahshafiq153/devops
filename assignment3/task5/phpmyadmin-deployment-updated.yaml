@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        env:
+        # CHANGED: Now using valueFrom -> configMapKeyRef
+        - name: PMA_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: db-host
+        - name: PMA_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: db-port
+        ports:
+        - containerPort: 80
+          name: http
