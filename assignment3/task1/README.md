@@ -94,7 +94,7 @@ minikube dashboard
 
 <img src="images/kubernetes dashboard with 1 deployment.png">
 
-**Screenshot - Dashboard Overview:**
+
 
 -----
 
