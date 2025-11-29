@@ -1,18 +1,3 @@
-Here is the **README.md** file for **Task 4 (Part 1)**.
-
-I have structured it to cover all the steps you performed: creating storage, deploying the database, deploying the frontend, and verifying the application. I have inserted the image tags pointing to the specific files you listed in your `ls` command.
-
-### **Instructions:**
-
-1.  Save the code block below as **`README.md`** inside your `assignment3/task4/` folder.
-2.  Ensure your folder structure matches exactly what is used in the `src` paths:
-      * `task4/images/terminal/kubectl apply -f mysql-storage.png`
-      * `task4/images/PHPmyadmin dashboard.png`
-      * (etc.)
-
------
-
-````markdown
 # Task 4: Create PhpMyAdmin and MySQL Apps (ClusterIP & Storage)
 
 ## 1. Objective
@@ -34,6 +19,7 @@ kubectl apply -f mysql-storage.yaml
 ````
 
 **Screenshot - Creating Storage:**
+
 <img src="images/terminal/kubectl apply -f mysql-storage.png" width="600">
 
 -----
@@ -57,6 +43,7 @@ kubectl apply -f mysql-deployment.yaml
 ```
 
 **Screenshot - Deploying MySQL:**
+
 <img src="images/terminal/kubectl apply -f mysql-deployment.png" width="600">
 
 -----
@@ -79,6 +66,7 @@ kubectl apply -f phpmyadmin-deployment.yaml
 ```
 
 **Screenshot - Deploying PhpMyAdmin:**
+
 <img src="images/terminal/kubectl apply -f phpmyadmin-deployment.png" width="600">
 
 -----
@@ -102,11 +90,13 @@ kubectl get pods
 ```
 
 **Screenshot - Pod Verification (CLI):**
+
 <img src="images/terminal/kubectl get pods.png" width="600">
 
 I also verified the workload status using the Kubernetes Dashboard.
 
 **Screenshot - Pod Verification (Dashboard):**
+
 <img src="images/minikube dashboard stating pods.png" width="600">
 
 -----
@@ -124,6 +114,7 @@ kubectl port-forward svc/phpmyadmin 8080:80
 I then accessed `http://localhost:8080` in my browser and logged in using the credentials defined in the deployment.
 
 **Screenshot - PhpMyAdmin Dashboard:**
+
 <img src="images/PHPmyadmin dashboard.png" width="600">
 
 ```
