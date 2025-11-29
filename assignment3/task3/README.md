@@ -10,20 +10,20 @@ minikube start --nodes 2
 ````
 
 **Screenshot - Deleting old cluster:**
-\<img src="images/terminal/minikube delete cluster.png" width="600"\>
+<img src="images/terminal/minikube delete cluster.png" >
 
 **Screenshot - Starting 2-node cluster:**
-\<img src="images/terminal/minikube start with 2 nodes.png" width="600"\>
+<img src="images/terminal/minikube start with 2 nodes.png" >
 
 I verified the nodes were ready using `kubectl get nodes`.
 
 **Screenshot - Node Verification:**
-\<img src="images/terminal/kubectl get nodes.png" width="600"\>
+<img src="images/terminal/kubectl get nodes.png" >
 
 I also verified the creation of the containers in the Docker Dashboard.
 
 **Screenshot - Docker Dashboard:**
-\<img src="images/docker desktop with 2 new containers of minikube.png" width="600"\>
+<img src="images/docker desktop with 2 new containers of minikube.png" >
 
 -----
 
@@ -55,7 +55,7 @@ kubectl apply -f hello-deployment.yaml
 ```
 
 **Screenshot - Applying Deployment:**
-\<img src="images/terminal/first deployment.png" width="600"\>
+<img src="images/terminal/first deployment.png" >
 
 I checked the pod locations. As expected, the anti-affinity rule forced the pods to run on **different nodes** (`minikube` and `minikube-m02`).
 
@@ -66,7 +66,7 @@ kubectl get pods -o wide
 ```
 
 **Screenshot - Pod Locations (Separate Nodes):**
-\<img src="images/terminal/checking pod locations using kubectl get pods.png" width="600"\>
+<img src="images/terminal/checking pod locations using kubectl get pods.png" >
 
 -----
 
@@ -81,12 +81,12 @@ kubectl delete deployment hello
 ```
 
 **Screenshot - Deleting Deployment:**
-\<img src="images/terminal/deleting first deployment.png" width="600"\>
+<img src="images/terminal/deleting first deployment.png" >
 
 I verified no pods were running.
 
 **Screenshot - Empty Pods:**
-\<img src="images/terminal/checking pods after deletion of first deployment using kubectl get pods.png" width="600"\>
+<img src="images/terminal/checking pods after deletion of first deployment using kubectl get pods.png" >
 
 ### Labeling the Node
 
@@ -99,12 +99,12 @@ kubectl label nodes minikube disktype=ssd
 ```
 
 **Screenshot - Labeling Node:**
-\<img src="images/terminal/labeled node using kubectl label nodes minikube disktype=ssd.png" width="600"\>
+<img src="images/terminal/labeled node using kubectl label nodes minikube disktype=ssd.png" >
 
 I verified the label was applied.
 
 **Screenshot - Label Verification:**
-\<img src="images/terminal/kubectl get nodes --show-labels.png" width="600"\>
+<img src="images/terminal/kubectl get nodes --show-labels.png" >
 
 ### Deploying Updated Configuration
 
@@ -120,7 +120,7 @@ kubectl apply -f hello–deployment-updated.yaml
 ```
 
 **Screenshot - Applying Updated Deployment:**
-\<img src="images/terminal/kubectl apply -f hello–deployment-updated.png" width="600"\>
+<img src="images/terminal/kubectl apply -f hello–deployment-updated.png" >
 
 I verified the pod locations again. This time, **both** pods were running on the **same node** (`minikube`), confirming that the `nodeSelector` successfully overrode the default scheduling behavior.
 
@@ -131,7 +131,6 @@ kubectl get pods -o wide
 ```
 
 **Screenshot - Final Verification (Same Node):**
-<img src="images/terminal/kubectl get pods -o wide after new hello-deployment-updated.png"\>
+<img src="images/terminal/kubectl get pods -o wide after new hello-deployment-updated.png">
 
-```
 ```
