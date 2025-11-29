@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      # 1. REMOVED the 'affinity' block that forced them apart.
+      
+      # 2. ADDED nodeSelector to force them to the specific node
+      nodeSelector:
+        disktype: ssd
+        
+      containers:
+      - name: hello-from
+        image: pbitty/hello-from:latest
+        ports:
+          - name: http
+            containerPort: 80
+      terminationGracePeriodSeconds: 1
