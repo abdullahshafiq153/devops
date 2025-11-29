@@ -9,6 +9,7 @@ The goal of this task was to deploy a stateful application stack consisting of a
 To ensure database data is preserved across pod restarts, I defined a Persistent Volume (PV) and a Persistent Volume Claim (PVC).
 
 **File:** `mysql-storage.yaml`
+
 This file defines:
 * A **PersistentVolume** with 1Gi of storage capacity.
 * A **PersistentVolumeClaim** requesting 1Gi of storage, which will be mounted by the MySQL deployment 
@@ -29,6 +30,7 @@ kubectl apply -f mysql-storage.yaml
 I deployed the MySQL container and mounted the PVC created in the previous step.
 
 **File:** `mysql-deployment.yaml`
+
 This file defines:
 
   * A Deployment running the `mysql:5.7` image.
@@ -53,6 +55,7 @@ kubectl apply -f mysql-deployment.yaml
 I deployed the frontend application to manage the database.
 
 **File:** `phpmyadmin-deployment.yaml`
+
 This file defines:
 
   * A Deployment running the `phpmyadmin/phpmyadmin` image.
