@@ -137,4 +137,3 @@ kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA
 
 <img src="images/terminal/kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA.png" width="800">
 
-```
