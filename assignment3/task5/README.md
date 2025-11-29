@@ -26,6 +26,7 @@ kubectl apply -f secret.yaml
 ```
 
 **Screenshot - Applying Secret:**
+
 <img src="images/terminal/kubectl apply -f secret.png" width="800">
 
 -----
@@ -53,13 +54,14 @@ kubectl apply -f configmap.yaml
 ```
 
 **Screenshot - Applying ConfigMap:**
+
 <img src="images/terminal/kubectl apply -f configmap.png" width="800">
 
 -----
 
 ## Step 3: Updating Deployments
 
-I modified the existing deployments to consume these new configuration objects.
+I modified the existing deployments from task 4 to consume these new configuration objects.
 
 ### MySQL Update
 
@@ -72,6 +74,7 @@ kubectl apply -f mysql-deployment-updated.yaml
 ```
 
 **Screenshot - Updating MySQL:**
+
 <img src="images/terminal/kubectl apply -f mysql-deployment-updated.png" width="800">
 
 ### PhpMyAdmin Update
@@ -85,6 +88,7 @@ kubectl apply -f phpmyadmin-deployment-updated.yaml
 ```
 
 **Screenshot - Updating PhpMyAdmin:**
+
 <img src="images/terminal/kubectl apply -f phpmyadmin-deployment-updated.png" width="800">
 
 -----
@@ -100,6 +104,7 @@ kubectl get pods
 ```
 
 **Screenshot - Pod Status:**
+
 <img src="images/terminal/kubectl get pods.png" width="800">
 
 ### Verifying Environment Variables
@@ -116,7 +121,8 @@ kubectl exec -it mysql-859dc5d94c-mdm5x -- env | grep MYSQL_ROOT_PASSWORD
 **Result:** `MYSQL_ROOT_PASSWORD=123456` (Correctly loaded from Secret)
 
 **Screenshot - MySQL Env Var:**
-<img src="images/terminal/kubectl exec -it mysql-859dc5d94c-mdm5x -- env | grep MYSQL\_ROOT\_PASSWORD.png" width="800">
+
+<img src="images/terminal/kubectl exec -it mysql-859dc5d94c-mdm5x -- env | grep MYSQL_ROOT_PASSWORD.png" width="800">
 
 **2. Verifying ConfigMap Injection (PhpMyAdmin):**
 I checked the `PMA_` variables inside the PhpMyAdmin pod.
@@ -128,7 +134,7 @@ kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA
 **Result:** `PMA_HOST=mysql` and `PMA_PORT=3306` (Correctly loaded from ConfigMap)
 
 **Screenshot - PhpMyAdmin Env Vars:**
+
 <img src="images/terminal/kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA.png" width="800">
 
-```
 ```
