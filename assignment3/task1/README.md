@@ -18,6 +18,9 @@ To create a single-node cluster on the local machine, I used the Minikube `start
 minikube start --driver=docker
 ````
 
+**Output:**
+<img src="images/terminal/minikube start.png">
+
 **Verification:**
 After the start process completed, I verified the cluster status to ensure the Control Plane, Kubelet, and APIServer were running.
 
@@ -28,17 +31,8 @@ minikube status
 ```
 
 **Output:**
+<img src="images/terminal/minikube status.png">
 
-```text
-minikube
-type: Control Plane
-host: Running
-kubelet: Running
-apiserver: Running
-kubeconfig: Configured
-```
-
-**Screenshot - Minikube Status:**
 
 I also verified that the node was ready by querying the cluster nodes.
 
@@ -49,13 +43,7 @@ kubectl get nodes
 ```
 
 **Output:**
-
-```text
-NAME       STATUS   ROLES           AGE   VERSION
-minikube   Ready    control-plane   26s   v1.34.0
-```
-
-**Screenshot - Node Status:**
+<img src="images/terminal/kubectl get nodes.png">
 
 -----
 
@@ -69,6 +57,9 @@ I deployed a single-container application (Nginx) using the `kubectl` command-li
 kubectl create deployment my-web-app --image=nginx
 ```
 
+**Output:**
+<img src="images/terminal/kubectl create deployment.png">
+
 To check the cluster's runtime and verify the deployment was successful, I listed the deployments.
 
 **Command:**
@@ -78,13 +69,7 @@ kubectl get deployments
 ```
 
 **Output:**
-
-```text
-NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-my-web-app   1/1     1            1           2m26s
-```
-
-**Screenshot - CLI Deployment:**
+<img src="images/terminal/kubectl get deployments.png">
 
 -----
 
@@ -99,6 +84,9 @@ minikube dashboard
 ```
 
 *Note: This command opens a proxy connection and launches the dashboard in the default web browser.*
+
+**Output:**
+<img src="images/kubernetes dashboard with 1 deployment.png">
 
 **Screenshot - Dashboard Overview:**
 
@@ -115,6 +103,8 @@ As an alternative to the CLI, I used the Kubernetes Dashboard "Create from Form"
   * **Number of pods:** `1`
   * **Service:** None
   * **Namespace:** default
+
+<img src="images/create from form configuration.png">
 
 **YAML Template:**
 Using the dashboard's preview feature, I generated the following YAML template for this deployment:
@@ -145,11 +135,11 @@ spec:
             privileged: false
 ```
 
-**Screenshot - Dashboard Form & YAML:**
+<img src="images/YAML preview.png>
 
 **Screenshot - Final Dashboard State:**
 The image below shows both deployments (`my-web-app` and `dashboard-demo`) running successfully.
-
+<img src="images/kubernetes dashboard with 2 deployment.png>
 ```
 ```
 
