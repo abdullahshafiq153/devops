@@ -21,7 +21,7 @@ kubectl apply -f mysql-storage.yaml
 
 **Screenshot - Creating Storage:**
 
-<img src="images/terminal/kubectl apply -f mysql-storage.png" width="600">
+<img src="images/terminal/kubectl apply -f mysql-storage.png" width="800">
 
 -----
 
@@ -46,7 +46,7 @@ kubectl apply -f mysql-deployment.yaml
 
 **Screenshot - Deploying MySQL:**
 
-<img src="images/terminal/kubectl apply -f mysql-deployment.png" width="600">
+<img src="images/terminal/kubectl apply -f mysql-deployment.png" width="800">
 
 -----
 
@@ -70,7 +70,7 @@ kubectl apply -f phpmyadmin-deployment.yaml
 
 **Screenshot - Deploying PhpMyAdmin:**
 
-<img src="images/terminal/kubectl apply -f phpmyadmin-deployment.png" width="600">
+<img src="images/terminal/kubectl apply -f phpmyadmin-deployment.png" width="800">
 
 -----
 
@@ -87,13 +87,13 @@ kubectl get pods
 
 **Screenshot - Pod Verification (CLI):**
 
-<img src="images/terminal/kubectl get pods.png" width="600">
+<img src="images/terminal/kubectl get pods.png" width="800">
 
 I also verified the workload status using the Kubernetes Dashboard.
 
 **Screenshot - Pod Verification (Dashboard):**
 
-<img src="images/minikube dashboard stating pods.png" width="600">
+<img src="images/minikube dashboard stating pods.png" width="800">
 
 -----
 
@@ -111,6 +111,6 @@ I then accessed `http://localhost:8080` in my browser and logged in using the cr
 
 **Screenshot - PhpMyAdmin Dashboard:**
 
-<img src="images/PHPmyadmin dashboard.png" width="600">
+<img src="images/PHPmyadmin dashboard.png" width="800">
 
 ```
