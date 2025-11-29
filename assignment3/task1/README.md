@@ -19,6 +19,7 @@ minikube start --driver=docker
 ````
 
 **Output:**
+
 <img src="images/terminal/minikube start.png">
 
 **Verification:**
@@ -31,6 +32,7 @@ minikube status
 ```
 
 **Output:**
+
 <img src="images/terminal/minikube status.png">
 
 
@@ -43,6 +45,7 @@ kubectl get nodes
 ```
 
 **Output:**
+
 <img src="images/terminal/kubectl get nodes.png">
 
 -----
@@ -58,6 +61,7 @@ kubectl create deployment my-web-app --image=nginx
 ```
 
 **Output:**
+
 <img src="images/terminal/kubectl create deployment.png">
 
 To check the cluster's runtime and verify the deployment was successful, I listed the deployments.
@@ -69,6 +73,7 @@ kubectl get deployments
 ```
 
 **Output:**
+
 <img src="images/terminal/kubectl get deployments.png">
 
 -----
@@ -86,6 +91,7 @@ minikube dashboard
 *Note: This command opens a proxy connection and launches the dashboard in the default web browser.*
 
 **Output:**
+
 <img src="images/kubernetes dashboard with 1 deployment.png">
 
 **Screenshot - Dashboard Overview:**
@@ -139,6 +145,7 @@ spec:
 
 **Screenshot - Final Dashboard State:**
 The image below shows both deployments (`my-web-app` and `dashboard-demo`) running successfully.
+
 <img src="images/kubernetes dashboard with 2 deployment.png>
 ```
 ```
