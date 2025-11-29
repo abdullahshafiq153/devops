@@ -1,11 +1,11 @@
 # Task 4: Create PhpMyAdmin and MySQL Apps (ClusterIP & Storage)
 
-## 1. Objective
+## Objective
 The goal of this task was to deploy a stateful application stack consisting of a backend database (MySQL) and a frontend management interface (PhpMyAdmin). This involved creating Persistent Volumes (PV) for data durability and exposing services internally using ClusterIPs
 
 ---
 
-## 2. Step 1: Persistent Storage Setup
+## Step 1: Persistent Storage Setup
 To ensure database data is preserved across pod restarts, I defined a Persistent Volume (PV) and a Persistent Volume Claim (PVC).
 
 **File:** `mysql-storage.yaml`
@@ -50,7 +50,7 @@ kubectl apply -f mysql-deployment.yaml
 
 -----
 
-## 4\. Step 3: Deploy PhpMyAdmin
+## Step 3: Deploy PhpMyAdmin
 
 I deployed the frontend application to manage the database.
 
@@ -74,7 +74,7 @@ kubectl apply -f phpmyadmin-deployment.yaml
 
 -----
 
-## 5\. Step 4: Verification
+## Step 4: Verification
 
 I verified that the storage, deployments, and services were created successfully.
 
@@ -104,7 +104,7 @@ I also verified the workload status using the Kubernetes Dashboard.
 
 -----
 
-## 6\. Step 5: Accessing the Application
+## Step 5: Accessing the Application
 
 Since the apps are exposed via `ClusterIP` (internal only), I used port-forwarding to access the PhpMyAdmin interface from my local machine.
 
