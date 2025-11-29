@@ -109,6 +109,8 @@ sudo nano /etc/hosts
 127.0.0.1 phpmyadmin.local
 ```
 
+<img src="images/terminal/Configuration Added.png" width="800">
+
 -----
 
 ## Step 4: Verification
