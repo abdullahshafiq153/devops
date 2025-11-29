@@ -1,0 +1,9 @@
+Task 1:
+1 Install Minikube to create a single-node cluster on your local machine. Choose the option that uses Docker.
+2 Deploy a single-container app: The goal of this task is to create a pod that consists of one container. Use an image of your preference and create a deployment via Kubernetes.
+Explain the commands you used to view your deployment and how you are going to check your cluster’s runtime.
+3 Configure Kubernetes Dashboard (GUI)
+(https://minikube.sigs.k8s.io/docs/handbook/dashboard/)
+4 Apart from the kubectl, use the Kubernetes Dashboard too for deployment and provide YAML templates and screenshot.
+
+Attention! For the next exercises make sure that a Minikube cluster is up and running.
