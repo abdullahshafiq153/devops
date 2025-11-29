@@ -131,7 +131,7 @@ kubectl get pods -o wide
 ```
 
 **Screenshot - Final Verification (Same Node):**
-\<img src="images/terminal/kubectl get pods -o wide after new hello-deployment-updated.png" width="600"\>
+<img src="images/terminal/kubectl get pods -o wide after new hello-deployment-updated.png"\>
 
 ```
 ```
