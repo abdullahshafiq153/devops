@@ -1,0 +1,58 @@
+apple@apples-MacBook-Pro devops % kubectl apply -f secret.yaml
+error: the path "secret.yaml" does not exist
+apple@apples-MacBook-Pro devops % clear
+apple@apples-MacBook-Pro devops % cd assignment3 
+apple@apples-MacBook-Pro assignment3 % cd task5
+apple@apples-MacBook-Pro task5 % kubectl apply -f secret.yaml
+secret/mysql-pass created
+apple@apples-MacBook-Pro task5 % 
+apple@apples-MacBook-Pro task5 % 
+apple@apples-MacBook-Pro task5 % 
+apple@apples-MacBook-Pro task5 % kubectl apply -f configmap.yaml
+configmap/app-config created
+apple@apples-MacBook-Pro task5 % kubectl apply -f mysql-deployment-updated.yaml
+deployment.apps/mysql configured
+apple@apples-MacBook-Pro task5 % kubectl apply -f phpmyadmin-deployment-updated.yaml
+deployment.apps/phpmyadmin configured
+apple@apples-MacBook-Pro task5 % kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+mysql-859dc5d94c-mdm5x       1/1     Running   0          90s
+phpmyadmin-54d4c7467-kkrjn   1/1     Running   0          66s
+apple@apples-MacBook-Pro task5 % 
+apple@apples-MacBook-Pro task5 % 
+apple@apples-MacBook-Pro task5 % kubectl exec -it mysql-859dc5d94c-mdm5x -- env | grep MYSQL_ROOT_PASSWORD
+MYSQL_ROOT_PASSWORD=123456
+apple@apples-MacBook-Pro task5 % kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA
+PMA_HOST=mysql
+PMA_PORT=3306
+PMA_SSL_DIR=/etc/phpmyadmin/ssl
+apple@apples-MacBook-Pro task5 % kubectl port-forward svc/phpmyadmin 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+^C%                                                                                                                                                      
+apple@apples-MacBook-Pro task5 % ls
+configmap.yaml                          mysql-deployment-updated.yaml           README.md
+images                                  phpmyadmin-deployment-updated.yaml      secret.yaml
+apple@apples-MacBook-Pro task5 % cd images
+apple@apples-MacBook-Pro images % ls
+phpmyadmin.png  terminal
+apple@apples-MacBook-Pro images % cd terminal 
+apple@apples-MacBook-Pro terminal % ls
+kubectl apply -f configmap.png
+kubectl apply -f mysql-deployment-updated.png
+kubectl apply -f phpmyadmin-deployment-updated.png
+kubectl apply -f secret.png
+kubectl exec -it mysql-859dc5d94c-mdm5x -- env | grep MYSQL_ROOT_PASSWORD.png
+kubectl exec -it phpmyadmin-54d4c7467-kkrjn -- env | grep PMA.png
+kubectl get pods.png
+apple@apples-MacBook-Pro terminal % 

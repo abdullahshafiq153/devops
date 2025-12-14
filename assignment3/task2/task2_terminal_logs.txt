@@ -1,0 +1,125 @@
+apple@apples-MacBook-Pro devops % docker login
+Authenticating with existing credentials... [Username: abdullah153]
+
+i Info → To login with a different account, run 'docker logout' followed by 'docker login'
+
+
+Login Succeeded
+apple@apples-MacBook-Pro devops % docker build -t abdullah153/python-redis-app:latest .
+[+] Building 0.3s (1/1) FINISHED                                                                                                                                docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                            0.1s
+ => => transferring dockerfile: 2B                                                                                                                                              0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+apple@apples-MacBook-Pro devops % ls
+assignment2     assignment3
+apple@apples-MacBook-Pro devops % cd assignment3
+apple@apples-MacBook-Pro assignment3 % cd task2
+apple@apples-MacBook-Pro task2 % docker build -t abdullah153/python-redis-app:latest .
+[+] Building 144.5s (15/15) FINISHED                                                                                                                            docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                            0.0s
+ => => transferring dockerfile: 331B                                                                                                                                            0.0s
+ => resolve image config for docker-image://docker.io/docker/dockerfile:1                                                                                                       7.6s
+ => [auth] docker/dockerfile:pull token for registry-1.docker.io                                                                                                                0.0s
+ => docker-image://docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6                                                       14.4s
+ => => resolve docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6                                                            0.0s
+ => => sha256:77246a01651da592b7bae79e0e20ed3b4f2e4c00a1b54b7c921c91ae3fa9ef07 13.57MB / 13.57MB                                                                               13.3s
+ => => extracting sha256:77246a01651da592b7bae79e0e20ed3b4f2e4c00a1b54b7c921c91ae3fa9ef07                                                                                       1.0s
+ => [internal] load metadata for docker.io/library/python:3.10-alpine                                                                                                           5.1s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                                   0.0s
+ => [internal] load .dockerignore                                                                                                                                               0.0s
+ => => transferring context: 2B                                                                                                                                                 0.0s
+ => [1/6] FROM docker.io/library/python:3.10-alpine@sha256:63f6d26c66126481336273c8d34a2017729843ac3b2de2897c428f27e066f1be                                                    17.1s
+ => => resolve docker.io/library/python:3.10-alpine@sha256:63f6d26c66126481336273c8d34a2017729843ac3b2de2897c428f27e066f1be                                                     0.0s
+ => => sha256:9463c33f02cb04bbc185fc1084b80cdda25a6d998debeda9819947253e5c1b48 250B / 250B                                                                                      0.6s
+ => => sha256:7714f75ddfc2be8cf74030a638884b5a2255a05dfafb8f6b1a00a29c8db44863 15.39MB / 15.39MB                                                                               15.6s
+ => => extracting sha256:7714f75ddfc2be8cf74030a638884b5a2255a05dfafb8f6b1a00a29c8db44863                                                                                       1.4s
+ => => extracting sha256:9463c33f02cb04bbc185fc1084b80cdda25a6d998debeda9819947253e5c1b48                                                                                       0.0s
+ => [internal] load build context                                                                                                                                               0.0s
+ => => transferring context: 1.09kB                                                                                                                                             0.0s
+ => [2/6] WORKDIR /code                                                                                                                                                         0.1s
+ => [3/6] RUN apk add --no-cache gcc musl-dev linux-headers                                                                                                                    66.5s
+ => [4/6] COPY requirements.txt requirements.txt                                                                                                                                0.0s 
+ => [5/6] RUN pip install -r requirements.txt                                                                                                                                  18.3s 
+ => [6/6] COPY . .                                                                                                                                                              0.0s 
+ => exporting to image                                                                                                                                                         14.3s 
+ => => exporting layers                                                                                                                                                         9.5s 
+ => => exporting manifest sha256:b4dc43d2a771933ba8f8f267cb8fcf77c12f76f6284dfbbbd833d4ffe615fb21                                                                               0.0s 
+ => => exporting config sha256:87030e6223bc7878188afd65e3c097a1d4287fa198d38437d00216ce3c6faaa4                                                                                 0.0s 
+ => => exporting attestation manifest sha256:cdf5e0e1dc9da4d20d9c92e27653cb88db1df05121f40853eaafc5df38034180                                                                   0.0s 
+ => => exporting manifest list sha256:eb7794e2720aa78ba1a7ec66ee245e887542120516b89149ed1536313e03c82d                                                                          0.0s
+ => => naming to docker.io/abdullah153/python-redis-app:latest                                                                                                                  0.0s
+ => => unpacking to docker.io/abdullah153/python-redis-app:latest                                                                                                               4.6s
+apple@apples-MacBook-Pro task2 % docker push abdullah153/python-redis-app:latest
+The push refers to repository [docker.io/abdullah153/python-redis-app]
+2d35ebdb57d9: Mounted from alpine/git 
+2acd53a8a5b6: Pushed 
+d766e2d56542: Pushed 
+26891c0a069a: Pushed 
+7714f75ddfc2: Pushed 
+d6919b1d38e5: Pushed 
+0d2bce103dc9: Pushed 
+ed9dedee13d3: Pushed 
+065bafc6aa04: Pushed 
+9463c33f02cb: Pushed 
+latest: digest: sha256:eb7794e2720aa78ba1a7ec66ee245e887542120516b89149ed1536313e03c82d size: 856
+apple@apples-MacBook-Pro task2 % kompose convert
+zsh: command not found: kompose
+apple@apples-MacBook-Pro task2 % brew install kompose
+zsh: command not found: brew
+apple@apples-MacBook-Pro task2 % apple@apples-MacBook-Pro task2 % kompose convert
+zsh: command not found: kompose
+apple@apples-MacBook-Pro task2 % brew install kompose
+zsh: command not found: brew
+apple@apples-MacBook-Pro task2 % curl -L https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-darwin-amd64 -o kompose
+zsh: command not found: apple@apples-MacBook-Pro
+zsh: command not found: zsh:
+zsh: command not found: apple@apples-MacBook-Pro
+zsh: command not found: zsh:
+zsh: command not found: apple@apples-MacBook-Pro
+apple@apples-MacBook-Pro task2 % curl -L https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-darwin-amd64 -o kompose
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 21.8M  100 21.8M    0     0   962k      0  0:00:23  0:00:23 --:--:-- 1003k
+apple@apples-MacBook-Pro task2 % chmod +x kompose
+apple@apples-MacBook-Pro task2 % sudo mv ./kompose /usr/local/bin/kompose
+Password:
+apple@apples-MacBook-Pro task2 % kompose convert                                                                    
+WARN Service "redis" won't be created because 'ports' is not specified 
+INFO Kubernetes file "web-service.yaml" created   
+INFO Kubernetes file "redis-deployment.yaml" created 
+INFO Kubernetes file "web-deployment.yaml" created 
+apple@apples-MacBook-Pro task2 % kompose convert                         
+INFO Kubernetes file "redis-service.yaml" created 
+INFO Kubernetes file "web-service.yaml" created   
+INFO Kubernetes file "redis-deployment.yaml" created 
+INFO Kubernetes file "web-deployment.yaml" created 
+apple@apples-MacBook-Pro task2 % kubectl apply -f .
+deployment.apps/redis created
+service/redis created
+deployment.apps/web created
+service/web created
+error: error validating "compose.yaml": error validating data: [apiVersion not set, kind not set]; if you choose to ignore these errors, turn validation off with --validate=false
+apple@apples-MacBook-Pro task2 % minikube service web
+┌───────────┬──────┬─────────────┬──────────────┐
+│ NAMESPACE │ NAME │ TARGET PORT │     URL      │
+├───────────┼──────┼─────────────┼──────────────┤
+│ default   │ web  │             │ No node port │
+└───────────┴──────┴─────────────┴──────────────┘
+😿  service default/web has no node port
+❗  Services [default/web] have type "ClusterIP" not meant to be exposed, however for local development minikube allows you to access this !
+🏃  Starting tunnel for service web./┌───────────┬──────┬─────────────┬────────────────────────┐
+│ NAMESPACE │ NAME │ TARGET PORT │          URL           │
+├───────────┼──────┼─────────────┼────────────────────────┤
+│ default   │ web  │             │ http://127.0.0.1:54055 │
+└───────────┴──────┴─────────────┴────────────────────────┘
+🏃  Starting tunnel for service web.
+🎉  Opening service default/web in default browser...
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+^C✋  Stopping tunnel for service web.
+apple@apples-MacBook-Pro task2 % kubectl get services
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP    6h58m
+redis        ClusterIP   10.105.123.134   <none>        6379/TCP   6m56s
+web          ClusterIP   10.109.103.54    <none>        8000/TCP   6m56s
+apple@apples-MacBook-Pro task2 % 

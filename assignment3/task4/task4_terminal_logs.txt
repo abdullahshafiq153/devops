@@ -1,0 +1,91 @@
+apple@apples-MacBook-Pro devops % cd assignment3
+apple@apples-MacBook-Pro assignment3 % cd task4
+apple@apples-MacBook-Pro task4 % kubectl apply -f mysql-storage.yaml
+persistentvolume/mysql-pv-volume created
+persistentvolumeclaim/mysql-pv-claim created
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % kubectl apply -f mysql-deployment.yaml
+deployment.apps/mysql created
+Warning: spec.SessionAffinity is ignored for headless services
+service/mysql created
+apple@apples-MacBook-Pro task4 % kubectl apply -f phpmyadmin-deployment.yaml
+deployment.apps/phpmyadmin created
+service/phpmyadmin created
+apple@apples-MacBook-Pro task4 % kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+hello-6f4fd7f4cf-6w4fm        1/1     Running             0          37m
+hello-6f4fd7f4cf-n4cvt        1/1     Running             0          37m
+mysql-74bbd9d79f-k6wm6        1/1     Running             0          3m32s
+phpmyadmin-5b68566c86-qr827   0/1     ContainerCreating   0          2m25s
+apple@apples-MacBook-Pro task4 % kubectl delete deployment hello
+deployment.apps "hello" deleted from default namespace
+apple@apples-MacBook-Pro task4 % kubectl get pods               
+NAME                          READY   STATUS              RESTARTS   AGE
+mysql-74bbd9d79f-k6wm6        1/1     Running             0          4m38s
+phpmyadmin-5b68566c86-qr827   0/1     ContainerCreating   0          3m31s
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+mysql-74bbd9d79f-k6wm6        1/1     Running             0          4m43s
+phpmyadmin-5b68566c86-qr827   0/1     ContainerCreating   0          3m36s
+apple@apples-MacBook-Pro task4 % kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+mysql-74bbd9d79f-k6wm6        1/1     Running             0          6m16s
+phpmyadmin-5b68566c86-qr827   0/1     ContainerCreating   0          5m9s
+apple@apples-MacBook-Pro task4 % minikube dashboard
+🔌  Enabling dashboard ...
+    ▪ Using image docker.io/kubernetesui/dashboard:v2.7.0
+    ▪ Using image docker.io/kubernetesui/metrics-scraper:v1.0.8
+💡  Some dashboard features require the metrics-server addon. To enable all features please run:
+
+        minikube addons enable metrics-server
+
+🤔  Verifying dashboard health ...
+🚀  Launching proxy ...
+🤔  Verifying proxy health ...
+🎉  Opening http://127.0.0.1:54748/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
+^C
+apple@apples-MacBook-Pro task4 % kubectl get pods  
+NAME                          READY   STATUS    RESTARTS   AGE
+mysql-74bbd9d79f-k6wm6        1/1     Running   0          9m12s
+phpmyadmin-5b68566c86-qr827   1/1     Running   0          8m5s
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % 
+apple@apples-MacBook-Pro task4 % kubectl port-forward svc/phpmyadmin 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+^C%                                                                                                                                                      
+apple@apples-MacBook-Pro task4 % ls
+images                          mysql-storage.yaml              README.md
+mysql-deployment.yaml           phpmyadmin-deployment.yaml
+apple@apples-MacBook-Pro task4 % cd images
+apple@apples-MacBook-Pro images % ls
+minikube dashboard stating pods.png     PHPmyadmin dashboard.png                terminal
+apple@apples-MacBook-Pro images % cd terminal
+apple@apples-MacBook-Pro terminal % ls
+kubectl apply -f mysql-deployment.png           kubectl apply -f phpmyadmin-deployment.png
+kubectl apply -f mysql-storage.png              kubectl get pods.png
+apple@apples-MacBook-Pro terminal % 

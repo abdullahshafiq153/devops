@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:8.0-debian
         env:
         # I will move this to a Secret in Task 5. For now, we use a direct value.
         - name: MYSQL_ROOT_PASSWORD

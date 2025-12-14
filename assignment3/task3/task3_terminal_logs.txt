@@ -1,0 +1,115 @@
+apple@apples-MacBook-Pro devops % cd assignment3
+apple@apples-MacBook-Pro assignment3 % cd task3
+apple@apples-MacBook-Pro task3 % minikube delete
+🔥  Deleting "minikube" in docker ...
+🔥  Deleting container "minikube" ...
+🔥  Removing /Users/apple/.minikube/machines/minikube ...
+💀  Removed all traces of the "minikube" cluster.
+apple@apples-MacBook-Pro task3 %                         
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % minikube start --nodes 2
+😄  minikube v1.37.0 on Darwin 15.6.1
+✨  Automatically selected the docker driver
+📌  Using Docker Desktop driver with root privileges
+👍  Starting "minikube" primary control-plane node in "minikube" cluster
+🚜  Pulling base image v0.0.48 ...
+🔥  Creating docker container (CPUs=2, Memory=3072MB) ...
+🐳  Preparing Kubernetes v1.34.0 on Docker 28.4.0 ...
+🔗  Configuring CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+
+👍  Starting "minikube-m02" worker node in "minikube" cluster
+🚜  Pulling base image v0.0.48 ...
+🔥  Creating docker container (CPUs=2, Memory=3072MB) ...
+🌐  Found network options:
+    ▪ NO_PROXY=192.168.49.2
+🐳  Preparing Kubernetes v1.34.0 on Docker 28.4.0 ...
+    ▪ env NO_PROXY=192.168.49.2
+🔎  Verifying Kubernetes components...
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get nodes
+NAME           STATUS   ROLES           AGE     VERSION
+minikube       Ready    control-plane   2m33s   v1.34.0
+minikube-m02   Ready    <none>          76s     v1.34.0
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl apply -f hello-deployment.yaml
+deployment.apps/hello created
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get pods -o wide
+NAME                    READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
+hello-bd796f95b-4bvvt   1/1     Running   0          44s   10.244.1.2   minikube-m02   <none>           <none>
+hello-bd796f95b-lsjt8   1/1     Running   0          44s   10.244.0.3   minikube       <none>           <none>
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get pods        
+NAME                    READY   STATUS    RESTARTS   AGE
+hello-bd796f95b-4bvvt   1/1     Running   0          114s
+hello-bd796f95b-lsjt8   1/1     Running   0          114s
+apple@apples-MacBook-Pro task3 % kubectl delete deployment hello
+deployment.apps "hello" deleted from default namespace
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get pods               
+No resources found in default namespace.
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl label nodes minikube disktype=ssd
+node/minikube labeled
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get nodes --show-labels
+NAME           STATUS   ROLES           AGE   VERSION   LABELS
+minikube       Ready    control-plane   28m   v1.34.0   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,disktype=ssd,kubernetes.io/arch=amd64,kubernetes.io/hostname=minikube,kubernetes.io/os=linux,minikube.k8s.io/commit=65318f4cfff9c12cc87ec9eb8f4cdd57b25047f3,minikube.k8s.io/name=minikube,minikube.k8s.io/primary=true,minikube.k8s.io/updated_at=2025_11_29T22_21_46_0700,minikube.k8s.io/version=v1.37.0,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
+minikube-m02   Ready    <none>          27m   v1.34.0   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=minikube-m02,kubernetes.io/os=linux,minikube.k8s.io/commit=65318f4cfff9c12cc87ec9eb8f4cdd57b25047f3,minikube.k8s.io/name=minikube,minikube.k8s.io/primary=false,minikube.k8s.io/updated_at=2025_11_29T22_22_59_0700,minikube.k8s.io/version=v1.37.0
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl apply -f hello-deployment_updated.yaml
+error: the path "hello-deployment_updated.yaml" does not exist
+apple@apples-MacBook-Pro task3 %                                               
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl apply -f hello-deployment-updated.yaml
+error: the path "hello-deployment-updated.yaml" does not exist
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl apply -f hello-deployment-updated.yaml
+error: the path "hello-deployment-updated.yaml" does not exist
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % ls
+hello-deployment.yaml           hello–deployment-updated.yaml   images                          README.md
+apple@apples-MacBook-Pro task3 % kubectl apply -f hello–deployment-updated.yaml
+deployment.apps/hello created
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % kubectl get pods -o wide
+NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+hello-6f4fd7f4cf-6w4fm   1/1     Running   0          95s   10.244.0.4   minikube   <none>           <none>
+hello-6f4fd7f4cf-n4cvt   1/1     Running   0          95s   10.244.0.5   minikube   <none>           <none>
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % 
+apple@apples-MacBook-Pro task3 % cd images
+apple@apples-MacBook-Pro images % ls
+docker desktop with 2 new containers of minikube.png    terminal
+apple@apples-MacBook-Pro images % cd terminal
+apple@apples-MacBook-Pro terminal % ls
+checking pod locations using kubectl get pods.png
+checking pods after deletion of first deployment using kubectl get pods.png
+deleting first deployment.png
+first deployment.png
+kubectl apply -f hello–deployment-updated.png
+kubectl get nodes --show-labels.png
+kubectl get nodes.png
+kubectl get pods -o wide after new hello-deployment-updated.png
+labeled node using kubectl label nodes minikube disktype=ssd.png
+minikube delete cluster.png
+minikube start with 2 nodes.png
+apple@apples-MacBook-Pro terminal % 
