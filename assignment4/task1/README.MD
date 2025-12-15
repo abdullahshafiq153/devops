@@ -1,6 +1,6 @@
 # Task 1: Single Node Kubernetes Production Cluster Setup (v1.32)
 
-This document details the exact steps I took to provision and configure a single-node Kubernetes cluster using `kubeadm` version 1.32 on Ubuntu.
+This document details the exact steps I took to configure a single-node Kubernetes cluster using `kubeadm` version 1.32 on Ubuntu.
 
 ## 1. System Configuration
 
