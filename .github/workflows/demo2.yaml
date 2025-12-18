@@ -30,7 +30,7 @@ jobs:
           docker tag ${{ env.IMAGE_NAME }}:${{ env.TAG }} ${{ env.IMAGE_NAME }}:$SHA_TAG
           
           
-      - name:Push Docker images
+      - name: Push Docker images
         run: | 
           SHA_TAG=${GITHUB_SHA::8}
           docker push ${{ env.IMAGE_NAME }}:${{ env.TAG }}
