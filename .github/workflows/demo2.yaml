@@ -23,14 +23,16 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.TAG }} .
 
-      - name: Tag and Push Docker images
+      - name: Tag Docker image with Git SHA
         run: |
-          # Create a short SHA variable
-          SHA_TAG=${GITHUB_SHA::8}
           
-          # Tag the image with the short SHA
+          SHA_TAG=${GITHUB_SHA::8}
           docker tag ${{ env.IMAGE_NAME }}:${{ env.TAG }} ${{ env.IMAGE_NAME }}:$SHA_TAG
           
-          # Push both the 'latest' tag and the 'SHA' tag
+          
+      - name:Push Docker images
+        run: | 
+          SHA_TAG=${GITHUB_SHA::8}
           docker push ${{ env.IMAGE_NAME }}:${{ env.TAG }}
           docker push ${{ env.IMAGE_NAME }}:$SHA_TAG
+
