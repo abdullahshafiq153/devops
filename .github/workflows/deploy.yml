@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: self-hosted  # <--- This is the magic. It runs ON YOUR VM.
+    runs-on: self-hosted  
 
     steps:
     # 1. Get the latest code
@@ -23,14 +23,23 @@ jobs:
 
     # 3. Build the Docker Image (Using the Release Tag, e.g., v1.1)
     - name: Build and Push Docker Image
+      env:
+        DOCKER_BUILDKIT: 1  # <--- Enables the smart builder
       run: |
         IMAGE_NAME=abdullah153/todo-app
         TAG=${{ github.event.release.tag_name }}
         
-        # KEY FIX: Point to the exact sub-folder
-        docker build -t $IMAGE_NAME:$TAG ./project/task1/my-todo-app
+        # Build using BuildKit with inline caching
+        docker build \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          --cache-from $IMAGE_NAME:latest \
+          -t $IMAGE_NAME:$TAG \
+          -t $IMAGE_NAME:latest \
+          ./project/task1/my-todo-app
         
+        # Push both the specific tag and 'latest' so cache is available for next time
         docker push $IMAGE_NAME:$TAG
+        docker push $IMAGE_NAME:latest
 
     # 4. Deploy to Kubernetes
     - name: Update Kubernetes Deployment
