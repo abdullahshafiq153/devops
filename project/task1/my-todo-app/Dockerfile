@@ -1,36 +1,15 @@
-FROM node:20-bullseye AS base
+FROM node:18-alpine
 
-# 1. Install dependencies
-FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
 
-# 2. Build the app
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# 1. Copy ONLY the package files first
+COPY package*.json ./
+
+# 2. Install dependencies (This layer will be CACHED unless package.json changes)
+RUN npm install
+
+# 3. Copy the rest of the app code AFTER installing
 COPY . .
-RUN npm run build
-
-# 3. Production image
-FROM base AS runner
-WORKDIR /app
-ENV NODE_ENV production
-
-# Create system user for security
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy built application
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
 
 EXPOSE 3000
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
