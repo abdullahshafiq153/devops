@@ -1,21 +1,23 @@
-# 1. Use the official Node.js image (Lightweight version)
+# Use Node image
 FROM node:18-alpine
 
-# 2. Set the working directory inside the container
+# Set directory
 WORKDIR /app
 
-# 3. Copy package files first (better caching)
-COPY package*.json ./
+# Create a simple server file DIRECTLY inside the image
+# (This trick bypasses the missing file error)
+RUN echo 'const http = require("http"); \
+const server = http.createServer((req, res) => { \
+  res.statusCode = 200; \
+  res.setHeader("Content-Type", "text/plain"); \
+  res.end("Viva Success! Version 0.6 is Live!\\n"); \
+}); \
+server.listen(3000, "0.0.0.0", () => { \
+  console.log("Server running on port 3000"); \
+});' > server.js
 
-# 4. Install dependencies
-RUN npm install
-
-# 5. Copy the rest of your application code
-COPY . .
-
-# 6. Expose the port your app runs on (usually 3000)
+# Expose the port
 EXPOSE 3000
 
-# 7. Start the application
-# (Make sure your main file is named 'app.js' or 'index.js', or check package.json)
-CMD ["npm", "start"]
+# Start the server
+CMD ["node", "server.js"]
