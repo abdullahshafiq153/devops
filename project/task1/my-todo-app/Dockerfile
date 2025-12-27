@@ -1,14 +1,17 @@
-FROM node:20-alpine
+FROM node:18-alpine
 WORKDIR /app
 
-# 1. Copy ONLY package files
+# 1. Install dependencies (Cached layer)
 COPY package*.json ./
-
-# 2. Install dependencies (This layer is cached if package.json didn't change!)
 RUN npm install
 
-# 3. Copy source code (This changes often, but doesn't trigger npm install)
+# 2. Copy code and RUN THE BUILD (This fixes the error)
 COPY . .
+RUN npm run build
 
+# 3. Production Environment
 EXPOSE 3000
+ENV NODE_ENV=production
+
+# 4. Start the server
 CMD ["npm", "start"]
