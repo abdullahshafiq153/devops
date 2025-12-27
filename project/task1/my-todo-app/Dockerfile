@@ -1,14 +1,13 @@
 FROM node:18-alpine
-
 WORKDIR /app
 
-# 1. Copy ONLY the package files first
+# 1. Copy ONLY package files
 COPY package*.json ./
 
-# 2. Install dependencies (This layer will be CACHED unless package.json changes)
+# 2. Install dependencies (This layer is cached if package.json didn't change!)
 RUN npm install
 
-# 3. Copy the rest of the app code AFTER installing
+# 3. Copy source code (This changes often, but doesn't trigger npm install)
 COPY . .
 
 EXPOSE 3000
