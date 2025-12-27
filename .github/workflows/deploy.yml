@@ -27,10 +27,9 @@ jobs:
         IMAGE_NAME=abdullah153/todo-app
         TAG=${{ github.event.release.tag_name }}
         
-        # Build image with the release tag
-        docker build -t $IMAGE_NAME:$TAG .
+        # KEY FIX: Point to the exact sub-folder
+        docker build -t $IMAGE_NAME:$TAG ./project/task1/my-todo-app
         
-        # Push to Docker Hub
         docker push $IMAGE_NAME:$TAG
 
     # 4. Deploy to Kubernetes
