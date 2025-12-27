@@ -1,64 +1,37 @@
-'use client';
-import { useState, useEffect } from 'react';
-
-// Define what a "Todo" looks like for TypeScript
-interface Todo {
-  _id: string;
-  title: string;
-  completed: boolean;
-}
-
-export default function Home() {
-  // Tell useState that 'todos' is an array of Todo objects
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [input, setInput] = useState<string>('');
-
-  useEffect(() => {
-    fetch('/api/todos')
-      .then((res) => res.json())
-      .then((data) => setTodos(data));
-  }, []);
-
-  const addTodo = async () => {
-    if (!input) return;
-    
-    const res = await fetch('/api/todos', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: input }),
-    });
-
-    const newTodo: Todo = await res.json();
-    setTodos([...todos, newTodo]);
-    setInput('');
-  };
-
+export default function TodoPage() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white p-8 rounded shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-black">My Project Tasks</h1>
-        <div className="flex gap-2 mb-4">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="border p-2 flex-grow rounded text-black"
-            placeholder="Add a new task..."
+    <main style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', padding: '40px 20px' }}>
+      <div style={{ maxWidth: '500px', margin: '0 auto', backgroundColor: 'white', padding: '30px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+        
+        {/* Header Section */}
+        <header style={{ borderBottom: '2px solid #eee', marginBottom: '20px', paddingBottom: '10px' }}>
+          <h1 style={{ color: '#1a73e8', margin: 0, fontSize: '24px' }}>✅ Task Manager Pro</h1>
+          <p style={{ color: '#666', fontSize: '14px', marginTop: '5px' }}>Version 2.0 - Kubernetes Managed</p>
+        </header>
+
+        {/* Input Feature */}
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+          <input 
+            placeholder="What needs to be done?" 
+            style={{ flex: 1, padding: '12px', borderRadius: '6px', border: '1px solid #ddd', fontSize: '16px' }}
           />
-          <button 
-            onClick={addTodo} 
-            className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-          >
+          <button style={{ backgroundColor: '#1a73e8', color: 'white', border: 'none', padding: '0 20px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
             Add
           </button>
         </div>
-        <ul className="space-y-2">
-          {todos.map((todo) => (
-            <li key={todo._id} className="border-b p-2 text-gray-800">
-              {todo.title}
-            </li>
-          ))}
+
+        {/* Task List (Mockup) */}
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          <li style={{ padding: '12px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <input type="checkbox" checked readOnly />
+            <span style={{ color: '#333' }}>Complete DevOps Project Submission</span>
+          </li>
+          <li style={{ padding: '12px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <input type="checkbox" />
+            <span style={{ color: '#333' }}>Review Prometheus Metrics</span>
+          </li>
         </ul>
       </div>
-    </div>
+    </main>
   );
 }
